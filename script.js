@@ -1,33 +1,37 @@
 const gridContainer = document.querySelector('.grid-container'); 
 
+let gridSize = 16; //default
+
 function createGridSquare() {
-    for (let i = 1; i <= 16; i++) { //each column
+    gridContainer.innerHTML = '';
+
+    for (let i = 1; i <= gridSize; i++) { //each column
         const gridColumn = document.createElement('div');
         gridColumn.className = 'grid-column';
         gridContainer.appendChild(gridColumn);
 
-        for (let j = 1; j <= 16; j++) { //each row
+        for (let j = 1; j <= gridSize; j++) { //each row
             const squareBox = document.createElement('div');
             squareBox.className = 'square-box';
             gridColumn.appendChild(squareBox);
             
             /* Boxes' borders */
-            squareBox.style.borderRight = '1px solid blue'; //test (color)
+            squareBox.style.borderRight = '1px solid grey';
 
-            squareBox.style.borderBottom = '1px solid green'; //test (color)
+            squareBox.style.borderBottom = '1px solid grey';
             
             if (i == 1) {
-                squareBox.style.borderLeft = '1px solid red'; //test (color)
+                squareBox.style.borderLeft = '1px solid grey';
             } 
             
             if (j == 1) {
-                squareBox.style.borderTop = '1px solid turquoise'; //test (color)
+                squareBox.style.borderTop = '1px solid grey';
             }
         } 
     }
 }
 
-createGridSquare();
+createGridSquare(); //default
 
 function changeColor() {
     const squareBoxes = document.querySelectorAll('.square-box');
@@ -39,4 +43,17 @@ function changeColor() {
     });
 };
 
-changeColor();
+changeColor(); //default
+
+function newGridSize() {
+    do {
+        gridSize = prompt("Enter grid size [1-100]: ", 16);
+    } while (gridSize < 1 || gridSize > 100);
+    
+    createGridSquare();
+    changeColor();
+}
+
+const gridSizeBtn = document.querySelector('#grid-size');
+
+gridSizeBtn.addEventListener('click', newGridSize);
