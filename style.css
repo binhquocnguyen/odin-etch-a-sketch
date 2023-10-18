@@ -1,0 +1,17 @@
+/* Square grid's styling */
+.grid-container {
+    display: flex;
+    border: 1px solid orange; /* test */
+    width: 400px;
+    height: 400px;
+}
+
+.grid-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.grid-column > div {
+    flex: 1;
+}
