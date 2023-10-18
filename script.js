@@ -8,6 +8,7 @@ function createGridSquare() {
 
         for (let j = 1; j <= 16; j++) { //each row
             const squareBox = document.createElement('div');
+            squareBox.className = 'square-box';
             gridColumn.appendChild(squareBox);
             
             /* Boxes' borders */
@@ -27,3 +28,15 @@ function createGridSquare() {
 }
 
 createGridSquare();
+
+function changeColor() {
+    const squareBoxes = document.querySelectorAll('.square-box');
+
+    squareBoxes.forEach(box => {
+        box.addEventListener('mouseover', () => {
+            box.style.backgroundColor = 'black';
+        });
+    });
+};
+
+changeColor();
