@@ -33,9 +33,9 @@ function createGridSquare() {
 
 createGridSquare(); //default
 
-function changeColor() {
-    const squareBoxes = document.querySelectorAll('.square-box');
+const squareBoxes = document.querySelectorAll('.square-box');
 
+function changeColor() {
     squareBoxes.forEach(box => {
         box.addEventListener('mouseover', () => {
             box.style.backgroundColor = 'black';
@@ -57,3 +57,11 @@ function newGridSize() {
 const gridSizeBtn = document.querySelector('#grid-size');
 
 gridSizeBtn.addEventListener('click', newGridSize);
+
+const clearBoardBtn = document.querySelector('#clear-board');
+
+clearBoardBtn.addEventListener('click', () => {
+    squareBoxes.forEach(box => {
+        box.style.backgroundColor = 'white';
+    });
+});
